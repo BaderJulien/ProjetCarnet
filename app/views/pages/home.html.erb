@@ -1,0 +1,41 @@
+  				<div class="Accueil1">
+					<h3>
+						Qu'est ce que c'est ?
+					</h3>
+					<p>
+						Carnet de bord de l’étudiant vous accompagnera lors de votre projet
+						informatique. Il permet le suivi de votre projet selon les
+						différentes phases d'analyse, de développement et de conception. Vous
+						pourrez saisir le temps passé sur chaque phase accompagné de notes
+						détaillées. Carnet de bord se chargera ensuite de modéliser vos données
+						afin que vous ayez une vue d'ensemble de votre avancement.
+					</p>
+				</div>
+				<div class="Accueil1">
+					<h3>
+						Pour qui ?
+					</h3>
+					<p>
+						<strong>Vous êtes étudiants à l'IUT de Montpellier en projet ou stage ?</strong>
+						</br>
+						Alors cet outil pourrait bien avoir son utilité pour savoir où
+						vous en êtes et à améliorer votre organisation et votre plannification.
+						</br></br>
+						<strong>Vous êtes du côté du mal et vous êtes professeurs ?</strong>
+						</br>
+						Cet outil vous permettra de toujours avoir un oeil sur l'avancement des
+						projets de vos étudiants. Vous aurez accès à leur projet et vous
+						pourrez laisser des commentaires afin de les guider.
+					</p>
+				</div>
+				<div class="Player">
+					<object type="application/x-shockwave-flash" width="425" height="355" data="http://www.youtube.com/v/InKZOPylUSQ&amp;hl=fr">
+						<param name="movie" value="//www.youtube.com/embed/InKZOPylUSQ" />
+						<param name="wmode" value="transparent" />
+					</object>
+				</div>
+
+<% if !signed_in? %>
+  <%= link_to "Log in!", '/signin', :class => "signup_button round" %> <br />
+  <h2>Vous n'etes pas inscrit ? <%= link_to "Inscription!", '/signup'%></h2>
+<% end %>

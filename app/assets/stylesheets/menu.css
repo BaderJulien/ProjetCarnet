@@ -1,0 +1,169 @@
+<style type="text/css">
+
+body
+{
+	height : auto;
+}
+
+.separation
+{
+	float : left;
+	position : relative;
+	/*margin-top : 50px;*/
+	height : 200px;
+	width : 5px;
+	background : black;
+	}
+
+#global
+{
+	left : 50%; 
+	top : 50%;
+	margin : auto;
+	width : 980px;
+	border : 0px;
+}
+
+
+div.bottombar
+{
+	height : 8px;
+	background : #1a1109;
+	left : 50%; 
+	top : 50%;
+	margin : auto;
+	width : 980px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+
+}
+.Global
+{ 
+	/*left : 50%;
+	top : 50%;*/
+	margin : auto;
+	width : 980px;
+	background-color : #F5F9F8;
+	border : 0px;
+}
+.Texte
+{ 
+	left : 50%; 
+	top : 50%;
+	margin : auto;
+	width : 980px;
+	background-image : url("bamb.png");
+	background-repeat : repeat;
+}
+
+div.Accueil1
+{
+	position : relative;
+	margin-top : 20px;
+	width : 47%;
+	float : left;
+	padding : 10px;
+}
+
+div.Bienvenu
+{
+	
+	text-align : center;
+	position : relative;
+	margin-top : 20px;
+	width : 100%;
+	float : left;
+	padding : 10px;
+}
+
+div.Connexion1
+{	
+	/*
+	margin-bottom : 50px;
+	margin-top:50px;
+	padding : 10px;
+	*/
+	text-align : center;
+	position : relative;
+	width : 47%;
+	float : left;
+	
+	/*border-style : solid;
+	border-width : 1px;*/
+}
+
+div.Conteneur
+{
+	position : relative;
+	width : 99,9%;
+	height : 100%;
+}
+
+div.ok
+{
+	position : relative;
+	width : 100%;
+	height : 150px;
+}
+
+div.Player
+{
+	clear : left;
+	position : relative;
+	padding : 50px;
+	text-align : center;
+	margin-left : auto; 
+	margin-right : auto;
+}
+
+ul.semiopaquemenu{ /* menu principale */
+font: bold 14px Georgia ;
+width: 980px;
+background: #b1e958;
+padding: 11px 0 8px 0; /* padding of the 4 sides of the menu */
+margin: auto;
+text-align: left; /* metre "left", "center", ou "right" pour aligner le menu en consequence */
+left: 50%; 
+top: 50%;
+height: 20
+
+    
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+ul.semiopaquemenu li{
+display: inline;
+}
+
+ul.semiopaquemenu li a{
+color:black;
+padding: 6px 8px 6px 8px; /* padding of the 4 sides of each menu link */
+margin-right: 15px; /* spacing between each menu link */
+text-decoration: none;
+}
+
+ul.semiopaquemenu li a:hover, ul.semiopaquemenu li a.selected{
+color: black;
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjgyIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4xNiIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); /* IE9+ SVG equivalent  of linear gradients */
+background: -moz-linear-gradient(top,  rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.16) 100%); /* fade from white (0.82 opacty) to 0.16 opacity */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.82)), color-stop(100%,rgba(255,255,255,0.16)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0.82) 0%,rgba(255,255,255,0.16) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,0.82) 0%,rgba(255,255,255,0.16) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,0.82) 0%,rgba(255,255,255,0.16) 100%);
+background: linear-gradient(top,  rgba(255,255,255,0.82) 0%,rgba(255,255,255,0.16) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1ffffff', endColorstr='#29ffffff',GradientType=0 );
+-moz-box-shadow: 0 0 5px #595959; /* CSS3 box shadows */
+-webkit-box-shadow: 0 0 5px #595959;
+box-shadow: 0 0 5px #595959;
+padding-top: 12px; /* large padding to get menu item to protrude upwards */
+padding-bottom: 20px; /* large padding to get menu item to protrude downwards */
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+</style>
+
