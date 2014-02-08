@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ApplicationHelper
   # Retourner un titre basé sur la page.
   def title
@@ -7,8 +8,5 @@ module ApplicationHelper
     else
       "#{base_title} - #{@title}"
     end
-  end
-  def logo
-   image_tag("logo.png", :alt => "Application exemple", :class => "round")
   end
 end

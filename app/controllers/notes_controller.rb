@@ -1,4 +1,6 @@
+# -*- encoding : utf-8 -*-
 class NotesController < ApplicationController
+  before_filter :authenticate
   # GET /notes
   # GET /notes.json
   def index
@@ -36,6 +38,7 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
     @note = Note.find(params[:id])
+    
   end
 
   # POST /notes
@@ -45,7 +48,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to @note, notice: 'Votre note a bien ete ajoute' }
         format.json { render json: @note, status: :created, location: @note }
       else
         format.html { render action: "new" }
@@ -61,7 +64,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to @note, notice: 'Votre note a bien ete modifie.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

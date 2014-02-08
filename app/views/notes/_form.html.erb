@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :Categorie %><br />
-    <%= f.text_field :Categorie %>
+    <%= collection_select(:note, :category_id, Note.all, :id, :name)
+%>
   </div>
   <div class="field">
     <%= f.label :Duree %><br />

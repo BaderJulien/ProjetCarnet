@@ -32,6 +32,7 @@ div.bottombar
 	left : 50%; 
 	top : 50%;
 	margin : auto;
+	margin-bottom : 30px;
 	width : 980px;
     border-radius: 10px;
     -moz-border-radius: 10px;

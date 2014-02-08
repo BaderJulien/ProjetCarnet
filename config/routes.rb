@@ -1,6 +1,7 @@
+# -*- encoding : utf-8 -*-
 Recon2::Application.routes.draw do
+  resources :categories
   resources :notes
-  resources :microposts
 
   get "sessions/new"
 
@@ -19,14 +20,8 @@ Recon2::Application.routes.draw do
   match '/help',    :to => 'pages#help'
   
   
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
+  resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :destroy]
-  resources :relationships, :only => [:create, :destroy]
   root :to => 'pages#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.

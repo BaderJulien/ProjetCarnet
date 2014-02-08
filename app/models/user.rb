@@ -1,25 +1,8 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id         :integer          not null, primary key
-#  nom        :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
+# -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
+  attr_accessible :nom, :email, :password, :password_confirmation
   attr_accessor :password
   has_many :notes, :dependent => :destroy
-  attr_accessible :nom, :email, :password, :password_confirmation
-  has_many :microposts, :dependent => :destroy
-  has_many :relationships, :foreign_key => "follower_id",:dependent => :destroy
-  has_many :following, :through => :relationships, :source => :followed
-  has_many :reverse_relationships, :foreign_key => "followed_id",
-                                   :class_name => "Relationship",
-                                   :dependent => :destroy
-  has_many :followers, :through => :reverse_relationships, :source => :follower
   # Crée automatique l'attribut virtuel 'password_confirmation'.
   validates :password, :presence     => true,
                        :confirmation => true,
@@ -41,20 +24,6 @@ class User < ActiveRecord::Base
     return user if user.has_password?(submitted_password)
   end
 
-  def feed
-    Micropost.from_users_followed_by(self)
-  end
-  def following?(followed)
-    relationships.find_by_followed_id(followed)
-  end
-
-  def follow!(followed)
-    relationships.create!(:followed_id => followed.id)
-  end
-
-  def unfollow!(followed)
-    relationships.find_by_followed_id(followed).destroy
-  end
   private
     def encrypt_password
       self.salt = make_salt if new_record?
