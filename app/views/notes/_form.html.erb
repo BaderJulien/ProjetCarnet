@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :Categorie %><br />
-    <%= collection_select(:note, :category_id, Note.all, :id, :name)
+    <%= collection_select(:phase, :nom, Phase.all, :id, :nom)
 %>
   </div>
   <div class="field">
