@@ -3,10 +3,10 @@ require 'spec_helper'
 describe "categories/index.html.erb" do
   before(:each) do
     assign(:categories, [
-      stub_model(Categorie,
+      stub_model(Category,
         :nom => "Nom"
       ),
-      stub_model(Categorie,
+      stub_model(Category,
         :nom => "Nom"
       )
     ])

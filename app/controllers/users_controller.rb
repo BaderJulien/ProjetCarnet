@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @notes = @User.notes
     @title = @user.nom
   end
   

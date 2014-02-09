@@ -1,9 +1,10 @@
 # -*- encoding : utf-8 -*-
 Recon2::Application.routes.draw do  resources :notes
   resources :phases
+  resources :categories
+
 
   get "sessions/new"
-
   get "users/new"
   get "pages/about"
   get "pages/home"

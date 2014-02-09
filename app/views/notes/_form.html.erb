@@ -17,8 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :Categorie %><br />
-    <%= collection_select(:phase, :nom, Phase.all, :id, :nom)
-%>
+    <%= f.collection_select :Categorie, Category.all, :id, :nom, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :Duree %><br />

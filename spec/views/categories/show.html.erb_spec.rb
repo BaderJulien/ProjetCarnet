@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "categories/show.html.erb" do
   before(:each) do
-    @categorie = assign(:categorie, stub_model(Categorie,
+    @category = assign(:category, stub_model(Category,
       :nom => "Nom"
     ))
   end

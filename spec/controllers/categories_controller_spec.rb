@@ -6,67 +6,67 @@ require 'spec_helper'
 
 describe CategoriesController do
 
-  def mock_categorie(stubs={})
-    @mock_categorie ||= mock_model(Categorie, stubs).as_null_object
+  def mock_category(stubs={})
+    @mock_category ||= mock_model(Category, stubs).as_null_object
   end
 
   describe "GET index" do
     it "assigns all categories as @categories" do
-      Categorie.stub(:all) { [mock_categorie] }
+      Category.stub(:all) { [mock_category] }
       get :index
-      assigns(:categories).should eq([mock_categorie])
+      assigns(:categories).should eq([mock_category])
     end
   end
 
   describe "GET show" do
-    it "assigns the requested categorie as @categorie" do
-      Categorie.stub(:find).with("37") { mock_categorie }
+    it "assigns the requested category as @category" do
+      Category.stub(:find).with("37") { mock_category }
       get :show, :id => "37"
-      assigns(:categorie).should be(mock_categorie)
+      assigns(:category).should be(mock_category)
     end
   end
 
   describe "GET new" do
-    it "assigns a new categorie as @categorie" do
-      Categorie.stub(:new) { mock_categorie }
+    it "assigns a new category as @category" do
+      Category.stub(:new) { mock_category }
       get :new
-      assigns(:categorie).should be(mock_categorie)
+      assigns(:category).should be(mock_category)
     end
   end
 
   describe "GET edit" do
-    it "assigns the requested categorie as @categorie" do
-      Categorie.stub(:find).with("37") { mock_categorie }
+    it "assigns the requested category as @category" do
+      Category.stub(:find).with("37") { mock_category }
       get :edit, :id => "37"
-      assigns(:categorie).should be(mock_categorie)
+      assigns(:category).should be(mock_category)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
-      it "assigns a newly created categorie as @categorie" do
-        Categorie.stub(:new).with({'these' => 'params'}) { mock_categorie(:save => true) }
-        post :create, :categorie => {'these' => 'params'}
-        assigns(:categorie).should be(mock_categorie)
+      it "assigns a newly created category as @category" do
+        Category.stub(:new).with({'these' => 'params'}) { mock_category(:save => true) }
+        post :create, :category => {'these' => 'params'}
+        assigns(:category).should be(mock_category)
       end
 
-      it "redirects to the created categorie" do
-        Categorie.stub(:new) { mock_categorie(:save => true) }
-        post :create, :categorie => {}
-        response.should redirect_to(category_url(mock_categorie))
+      it "redirects to the created category" do
+        Category.stub(:new) { mock_category(:save => true) }
+        post :create, :category => {}
+        response.should redirect_to(category_url(mock_category))
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved categorie as @categorie" do
-        Categorie.stub(:new).with({'these' => 'params'}) { mock_categorie(:save => false) }
-        post :create, :categorie => {'these' => 'params'}
-        assigns(:categorie).should be(mock_categorie)
+      it "assigns a newly created but unsaved category as @category" do
+        Category.stub(:new).with({'these' => 'params'}) { mock_category(:save => false) }
+        post :create, :category => {'these' => 'params'}
+        assigns(:category).should be(mock_category)
       end
 
       it "re-renders the 'new' template" do
-        Categorie.stub(:new) { mock_categorie(:save => false) }
-        post :create, :categorie => {}
+        Category.stub(:new) { mock_category(:save => false) }
+        post :create, :category => {}
         response.should render_template("new")
       end
     end
@@ -74,34 +74,34 @@ describe CategoriesController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested categorie" do
-        Categorie.stub(:find).with("37") { mock_categorie }
+      it "updates the requested category" do
+        Category.stub(:find).with("37") { mock_category }
         mock_category.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :categorie => {'these' => 'params'}
+        put :update, :id => "37", :category => {'these' => 'params'}
       end
 
-      it "assigns the requested categorie as @categorie" do
-        Categorie.stub(:find) { mock_categorie(:update_attributes => true) }
+      it "assigns the requested category as @category" do
+        Category.stub(:find) { mock_category(:update_attributes => true) }
         put :update, :id => "1"
-        assigns(:categorie).should be(mock_categorie)
+        assigns(:category).should be(mock_category)
       end
 
-      it "redirects to the categorie" do
-        Categorie.stub(:find) { mock_categorie(:update_attributes => true) }
+      it "redirects to the category" do
+        Category.stub(:find) { mock_category(:update_attributes => true) }
         put :update, :id => "1"
-        response.should redirect_to(category_url(mock_categorie))
+        response.should redirect_to(category_url(mock_category))
       end
     end
 
     describe "with invalid params" do
-      it "assigns the categorie as @categorie" do
-        Categorie.stub(:find) { mock_categorie(:update_attributes => false) }
+      it "assigns the category as @category" do
+        Category.stub(:find) { mock_category(:update_attributes => false) }
         put :update, :id => "1"
-        assigns(:categorie).should be(mock_categorie)
+        assigns(:category).should be(mock_category)
       end
 
       it "re-renders the 'edit' template" do
-        Categorie.stub(:find) { mock_categorie(:update_attributes => false) }
+        Category.stub(:find) { mock_category(:update_attributes => false) }
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -109,14 +109,14 @@ describe CategoriesController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested categorie" do
-      Categorie.stub(:find).with("37") { mock_categorie }
+    it "destroys the requested category" do
+      Category.stub(:find).with("37") { mock_category }
       mock_category.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the categories list" do
-      Categorie.stub(:find) { mock_categorie }
+      Category.stub(:find) { mock_category }
       delete :destroy, :id => "1"
       response.should redirect_to(categories_url)
     end
