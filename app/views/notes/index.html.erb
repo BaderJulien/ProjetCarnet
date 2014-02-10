@@ -9,12 +9,13 @@
     <th>Titre</th>
     <th>Texte</th>
     <th>Commentaire</th>
+    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @notes.each do |note| %>
+<% current_user.notes.each do |note| %>
   <tr>
     <td><%= note.Date %></td>
     <td><%= note.Categorie %></td>
@@ -23,6 +24,7 @@
     <td><%= note.Titre %></td>
     <td><%= note.Texte %></td>
     <td><%= note.Commentaire %></td>
+    <td><%= note.user_id %></td>
     <td><%= link_to 'Show', note %></td>
     <td><%= link_to 'Edit', edit_note_path(note) %></td>
     <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
