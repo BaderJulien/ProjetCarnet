@@ -1,33 +1,14 @@
 <h1>Ensemble de vos notes</h1>
 
 <table>
-  <tr>
-    <th>Date</th>
-    <th>Categorie</th>
-    <th>Duree</th>
-    <th>Difficulte</th>
-    <th>Titre</th>
-    <th>Texte</th>
-    <th>Commentaire</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% current_user.notes.each do |note| %>
+    <tr>
+    <th>Titre: <%= note.Titre %> Date: <%= note.Date %> Categorie: <%= note.Categorie %> Duree: <%= note.Duree %> Difficulte: <%= note.Difficulte %></th>
+  </tr>
   <tr>
-    <td><%= note.Date %></td>
-    <td><%= note.Categorie %></td>
-    <td><%= note.Duree %></td>
-    <td><%= note.Difficulte %></td>
-    <td><%= note.Titre %></td>
     <td><%= note.Texte %></td>
-    <td><%= note.Commentaire %></td>
-    <td><%= note.user_id %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Modifier', edit_note_path(note) %></td>
+    <td><%= link_to 'Supprimer', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

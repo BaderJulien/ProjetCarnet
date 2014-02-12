@@ -1,72 +1,53 @@
 # -*- encoding : utf-8 -*-
-require 'rspec/core'
-require 'autotest/rspec2'
+require 'rubygems'
+require 'spork'
 
-Dir['./spec/support/**/*.rb'].map {|f| require f}
+Spork.prefork do
+  ENV["RAILS_ENV"] ||= 'test'
+  require File.expand_path("../../config/environment", __FILE__)
+  require 'rspec/rails'
+  require 'rspec/autorun'
 
-class NullObject
-  private
-  def method_missing(method, *args, &block)
-    # ignore
+  # Requires supporting ruby files with custom matchers and macros, etc,
+  # in spec/support/ and its subdirectories.
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+  # Checks for pending migrations before tests are run.
+  # If you are not using ActiveRecord, you can remove this line.
+  ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
+  RSpec.configure do |config|
+    # ## Mock Framework
+    #
+    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+    #
+    # config.mock_with :mocha
+    # config.mock_with :flexmock
+    # config.mock_with :rr
+
+    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+    config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+    # If you're not using ActiveRecord, or you'd prefer not to run each of your
+    # examples within a transaction, remove the following line or assign false
+    # instead of true.
+    config.use_transactional_fixtures = true
+
+    # If true, the base class of anonymous controllers will be inferred
+    # automatically. This will be the default behavior in future versions of
+    # rspec-rails.
+    config.infer_base_class_for_anonymous_controllers = false
+
+    # Run specs in random order to surface order dependencies. If you find an
+    # order dependency and want to debug it, you can fix the order by providing
+    # the seed, which is printed after each run.
+    #     --seed 1234
+    config.order = "random"
+    config.include Capybara::DSL
   end
 end
 
-def sandboxed(&block)
-  begin
-    @orig_config = RSpec.configuration
-    @orig_world  = RSpec.world
-    new_config = RSpec::Core::Configuration.new
-    new_config.include(RSpec::Matchers)
-    new_world  = RSpec::Core::World.new(new_config)
-    RSpec.instance_variable_set(:@configuration, new_config)
-    RSpec.instance_variable_set(:@world, new_world)
-    object = Object.new
-    object.extend(RSpec::Core::ObjectExtensions)
-    object.extend(RSpec::Core::SharedExampleGroup)
+Spork.each_run do
+  # This code will be run each time you run your specs.
 
-    (class << RSpec::Core::ExampleGroup; self; end).class_eval do
-      alias_method :orig_run, :run
-      def run(reporter=nil)
-        @orig_mock_space = RSpec::Mocks::space
-        RSpec::Mocks::space = RSpec::Mocks::Space.new
-        orig_run(reporter || NullObject.new)
-      ensure
-        RSpec::Mocks::space = @orig_mock_space
-      end
-    end
-
-    object.instance_eval(&block)
-  ensure
-    (class << RSpec::Core::ExampleGroup; self; end).class_eval do
-      remove_method :run
-      alias_method :run, :orig_run
-      remove_method :orig_run
-    end
-
-    RSpec.instance_variable_set(:@configuration, @orig_config)
-    RSpec.instance_variable_set(:@world, @orig_world)
-  end
-end
-
-def in_editor?
-  ENV.has_key?('TM_MODE') || ENV.has_key?('EMACS') || ENV.has_key?('VIM')
-end
-
-RSpec.configure do |c|
-  c.color_enabled = !in_editor?
-  c.filter_run :focus => true
-  c.run_all_when_everything_filtered = true
-  c.filter_run_excluding :ruby => lambda {|version|
-    case version.to_s
-    when "!jruby"
-      RUBY_ENGINE != "jruby"
-    when /^> (.*)/
-      !(RUBY_VERSION.to_s > $1)
-    else
-      !(RUBY_VERSION.to_s =~ /^#{version.to_s}/)
-    end
-  }
-  c.around do |example|
-    sandboxed { example.run }
-  end
 end

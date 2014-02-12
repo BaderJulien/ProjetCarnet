@@ -9,17 +9,18 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140210082606) do
+ActiveRecord::Schema.define(version: 20140212140624) do
 
-  create_table "categories", :force => true do |t|
+  create_table "categories", force: true do |t|
     t.string   "nom"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  create_table "notes", :force => true do |t|
+  create_table "notes", force: true do |t|
     t.date     "Date"
     t.integer  "Categorie"
     t.integer  "Duree"
@@ -27,21 +28,21 @@ ActiveRecord::Schema.define(:version => 20140210082606) do
     t.string   "Titre"
     t.text     "Texte"
     t.text     "Commentaire"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users", force: true do |t|
     t.string   "nom"
     t.string   "email"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

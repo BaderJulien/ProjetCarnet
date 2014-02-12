@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :Categorie %><br />
-    <%= f.collection_select :Categorie, Category.all, :id, :nom, prompt: true %>
+    <%= f.collection_select :Categorie, current_user.categories.all, :id, :nom, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :Duree %><br />

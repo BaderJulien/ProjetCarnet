@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :nom, :email, :password, :password_confirmation
   attr_accessor :password
   has_many :notes, :dependent => :destroy
+  has_many :categories, :dependent => :destroy
   # Crée automatique l'attribut virtuel 'password_confirmation'.
   validates :password, :presence     => true,
                        :confirmation => true,

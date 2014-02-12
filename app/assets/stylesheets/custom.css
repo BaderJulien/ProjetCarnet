@@ -101,6 +101,13 @@ a.signup_button {
   border-radius:         10px;
 }
 
+.round2 {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+  background: #E5EEEC;
+}
+
 /* Footer */
 footer {
   text-align: center;
