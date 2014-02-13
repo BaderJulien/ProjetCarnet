@@ -6,3 +6,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+categories = Categories.create([{ name: 'Analyse' }, { name: 'Conception' }, { name: 'Developpement' }, { name: 'Test' }, { name: 'Resultat' }])
+     t.date :Date
+      t.integer :Categorie
+      t.integer :Duree
+      t.integer :Difficulte
+      t.string :Titre
+      t.text :Texte
+      t.text :Commentaire
+notes = Notes.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])

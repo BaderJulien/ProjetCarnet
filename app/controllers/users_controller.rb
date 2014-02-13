@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
+      current_user.categories.create([{ nom: 'Analyse' }, { nom: 'Conception' }, { nom: 'Developpement' }, { nom: 'Test' }, { nom: 'Resultat' }])
       flash[:success] = "Bienvenue sur votre Carnet de Bord en ligne !"
       redirect_to @user
     else

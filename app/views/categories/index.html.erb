@@ -1,4 +1,5 @@
-<h1>Listing categories</h1>
+<%if current_user.categories.count>0 %>
+<h1>Voici vos categories de tâche</h1>
 
 <table>
   <tr>
@@ -11,13 +12,16 @@
 <% current_user.categories.each do |category| %>
   <tr>
     <td><%= category.nom %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Modifier', edit_category_path(category) %></td>
+    <td><%= link_to 'Suprimer', category, method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'Ajouter une categorie', new_category_path %>
+<%else%>
+<h3>Vous n'avez encore aucune categorie, dépéchez vous d'en ajouter une !</h3>
+<%= link_to 'Ajouter une categorie', new_category_path %>
+<% end %>

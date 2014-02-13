@@ -7,9 +7,9 @@
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
       <li><%= link_to "Saisir Note", new_note_path %></li>
-      <li><%= link_to "VoirCarnet", notes_path %></li>
-      <li><%= link_to "Nouvelle categorie", new_category_path %></li>
-       <li><%= link_to "Voir Graphe", "graphe" %></li>
+      <li><%= link_to "Mon Carnet", notes_path %></li>
+      <li><%= link_to "Mes Categories", categories_path %></li>
+       <li><%= link_to "Voir Graphe", graphe_path %></li>
       <li><%= link_to "Profil", edit_user_path(current_user) %></li>
       <li><%= link_to "Logout", signout_path, :method => :delete %></li>
       <% else %>

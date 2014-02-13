@@ -31,8 +31,6 @@ class PagesController < ApplicationController
     nbcategorie=current_user.categories.count
     tabdata = []
     tablabel = []
-    tabcolor = ['34ff34','00e700','009b00','9b004e']
-    #color = 0x34ff34
     somme = 0
     current_user.categories.each do |categorie|
       current_user.notes.each do |note|
@@ -40,8 +38,6 @@ class PagesController < ApplicationController
           somme = somme + note.Duree
         end
       end
-      #color=color-0x000010
-      #tabcolor.push(color.to_i)
       tabdata.push(somme)
       tablabel.push(categorie.nom)
      end
